@@ -2,10 +2,9 @@ import React from "react";
 
 function Header() {
   return (
-    <>
-      <div></div>
-    </>
+    <div>
+      <h1> helllo js</h1>
+    </div>
   );
 }
-
 export default Header;
