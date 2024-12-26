@@ -6,6 +6,10 @@ export default {
       fontFamily: {
         poppins: ['"Poppins "', "sans-serif"],
         robotoMono: ['"Roboto Mono"', "monospace "],
+        color: {
+          red: "#d01c28",
+          gray: "#2e2e2e",
+        },
       },
     },
   },
