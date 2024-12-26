@@ -1,4 +1,4 @@
-import React, { useDebugValue } from "react";
+import React from "react";
 
 function Headline() {
   return (
@@ -6,7 +6,7 @@ function Headline() {
       <nav className=" flex justify-between items-center p-4 bg-gray-100">
         <div className=" logo">
           <img
-            src="\project.img\brand_logo.png"
+            src="\src\assets\brand_logo.png"
             alt="logo"
             className=" w-16 h-auto"
           />
