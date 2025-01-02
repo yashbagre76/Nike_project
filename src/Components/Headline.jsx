@@ -4,7 +4,7 @@ import React, { useState } from "react";
 function Headline() {
   return (
     <div>
-      <nav className=" flex justify-between items-center p-4 bg-gray-100">
+      <nav className=" flex justify-between items-center p-4 bg-black text-white">
         <div className=" logo">
           <img
             src="\src\assets\brand_logo.png"
