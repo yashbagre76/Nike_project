@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import { Navlink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Headline() {
   return (
@@ -14,7 +14,6 @@ function Headline() {
         </div>
         <ul className="flex space-x-8">
           <li href="#" className=" text-grey-700 hover:text-red-500">
-            {" "}
             Menu{" "}
           </li>
           <li href="#" className=" text-grey-700 hover:text-red-500">
@@ -29,9 +28,12 @@ function Headline() {
             Contact{" "}
           </li>
         </ul>
-        <button className="px-4 py-1 h- m-8  bg-orange-800 text-white font-medium">
-          Login
-        </button>
+        {/* Shop button  */}
+        <Link to="/Products">
+          <button className="px-4 py-1 h- m-8  bg-orange-800 text-white font-medium">
+            Login
+          </button>
+        </Link>
       </nav>
     </div>
   );
