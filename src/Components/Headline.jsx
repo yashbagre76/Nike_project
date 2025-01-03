@@ -1,6 +1,3 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
 function Headline() {
   return (
     <div>
@@ -28,12 +25,10 @@ function Headline() {
             Contact{" "}
           </li>
         </ul>
-        {/* Shop button  */}
-        <Link to="/Products">
-          <button className="px-4 py-1 h- m-8  bg-orange-800 text-white font-medium">
-            Login
-          </button>
-        </Link>
+
+        <button className="px-4 py-1 h- m-8  bg-orange-800 text-white font-medium">
+          Login
+        </button>
       </nav>
     </div>
   );

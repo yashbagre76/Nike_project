@@ -3,15 +3,21 @@ import "./App.css";
 import MainContent from "./Components/MainContent";
 import Footer from "./Components/Footer";
 import Products from "./Components/Products";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <Headline />
-      <MainContent />
-      <Products />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Headline />
+        <Routes>
+          <Route path="/" element={<MainContent />} />
+          <Route path="/products" element={<Products />} />
+        </Routes>
+        {/* Footer */}
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

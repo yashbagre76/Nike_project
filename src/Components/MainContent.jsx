@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function MainContent() {
   return (
     <main className="py-8">
@@ -16,10 +18,13 @@ function MainContent() {
           </p>
 
           {/* Buttons Section */}
+
           <div className="flex flex-col md:flex-row justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-4 mb-6">
-            <button className="px-6 py-3 bg-orange-800 text-white font-medium rounded-md hover:bg-orange-700 transform hover:scale-105 transition-all text-lg">
-              Shop Now
-            </button>
+            <Link to="/products">
+              <button className="px-6 py-3 bg-orange-800 text-white font-medium rounded-md hover:bg-orange-700 transform hover:scale-105 transition-all text-lg">
+                Shop Now
+              </button>
+            </Link>
             <button className="px-6 py-3 bg-gray-100 text-orange-800 font-medium rounded-md border border-orange-800 hover:bg-orange-700 hover:text-white transform hover:scale-105 transition-all text-lg">
               Category
             </button>
