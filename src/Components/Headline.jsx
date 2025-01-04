@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 function Headline() {
+  const navigate = useNavigate();
   return (
     <div>
       <nav className=" flex justify-between items-center p-4 bg-black text-white">
@@ -25,10 +28,20 @@ function Headline() {
             Contact{" "}
           </li>
         </ul>
-
-        <button className="px-4 py-1 h- m-8  bg-orange-800 text-white font-medium">
-          Login
-        </button>
+        <div>
+          <button
+            className="px-3 py-1 h- m-3  bg-orange-800 text-white font-medium"
+            onClick={() => navigate("/register")}
+          >
+            Register
+          </button>
+          <button
+            className="px-4 py-1 h- m-8  bg-blue-800 text-white font-medium"
+            onClick={() => navigate("/login")}
+          >
+            Login
+          </button>
+        </div>
       </nav>
     </div>
   );
