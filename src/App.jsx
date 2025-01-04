@@ -6,6 +6,7 @@ import Products from "./Components/Products";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RegisterCard from "./Components/Register";
 import LoginCard from "./Components/Login";
+import About from "./Components/About";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/register" element={<RegisterCard />} />
           <Route path="/login" element={<LoginCard />} />
+          <Route path="/about" element={<About />} />
         </Routes>
         {/* Footer */}
         <Footer />

@@ -19,7 +19,11 @@ function Headline() {
           <li href="#" className=" text-grey-700 hover:text-red-500">
             Location
           </li>
-          <li href="#" className=" text-grey-700 hover:text-red-500">
+          <li
+            href="#"
+            className=" text-grey-700 hover:text-red-500"
+            onClick={() => navigate("/about")}
+          >
             {" "}
             About{" "}
           </li>
