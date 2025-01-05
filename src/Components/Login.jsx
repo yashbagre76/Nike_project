@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { TextField, Button, Typography, Box, Container } from "@mui/material";
 
 function LoginCard() {
   const navigate = useNavigate();
@@ -22,67 +23,84 @@ function LoginCard() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
-        <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">
+    <Container
+      maxWidth="xs"
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+        backgroundColor: "#f7f7f7",
+      }}
+    >
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: 400,
+          p: 4,
+          backgroundColor: "white",
+          borderRadius: "8px",
+          boxShadow: 3,
+        }}
+      >
+        <Typography variant="h5" component="h2" align="center" gutterBottom>
           Login
-        </h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label
-              htmlFor="email"
-              className="block mb-2 text-sm font-medium text-gray-600"
-            >
-              Email
-            </label>
-            <input
+        </Typography>
+
+        <form onSubmit={handleSubmit}>
+          <Box mb={3}>
+            <TextField
+              label="Email"
               type="email"
-              id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your email"
+              fullWidth
               required
+              variant="outlined"
+              size="small"
             />
-          </div>
-          <div>
-            <label
-              htmlFor="password"
-              className="block mb-2 text-sm font-medium text-gray-600"
-            >
-              Password
-            </label>
-            <input
+          </Box>
+
+          <Box mb={3}>
+            <TextField
+              label="Password"
               type="password"
-              id="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your password"
+              fullWidth
               required
+              variant="outlined"
+              size="small"
             />
-          </div>
-          <button
+          </Box>
+
+          <Button
             type="submit"
-            className="w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            fullWidth
+            variant="contained"
+            color="primary"
+            sx={{ mt: 2 }}
           >
             Login
-          </button>
+          </Button>
         </form>
-        <div className="mt-4 text-sm text-center text-gray-600">
-          Don't have an account?{" "}
-          <a
-            href="/register"
-            className="text-blue-500 hover:underline focus:outline-none focus:underline "
-            onClick={() => navigate("/register")}
-          >
-            Register here
-          </a>
-        </div>
-      </div>
-    </div>
+
+        <Box mt={2} textAlign="center">
+          <Typography variant="body2" color="textSecondary">
+            Don't have an account?{" "}
+            <Button
+              variant="text"
+              color="primary"
+              onClick={() => navigate("/register")}
+            >
+              Register here
+            </Button>
+          </Typography>
+        </Box>
+      </Box>
+    </Container>
   );
 }
 

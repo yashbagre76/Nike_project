@@ -1,4 +1,14 @@
-import React from "react";
+import * as React from "react";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Button,
+  Typography,
+  Grid,
+  Box,
+} from "@mui/material";
 import xyz from "../../public/Img/JORDER_SE.jpg";
 import QWY from "../../public/Img/JORDERN-AIR.jpg";
 import ERT from "../../public/Img/JORDERN-HIGH.jpg";
@@ -17,91 +27,103 @@ function Products() {
       id: 1,
       name: "Air Jordan-SE",
       price: "$150",
-      img: xyz, // Add image path here
+      img: xyz,
     },
     {
       id: 2,
       name: "Air Jordan-AIR",
       price: "$180",
-      img: QWY, // Add image path here
+      img: QWY,
     },
     {
       id: 3,
       name: "Air Jordan-1-HIGH",
       price: "$270",
-      img: ERT, // Add image path here
+      img: ERT,
     },
     {
       id: 4,
       name: "Air Jordan-1-LOW",
       price: "$190",
-      img: DSF, // Add image path here
+      img: DSF,
     },
     {
       id: 5,
       name: "Air Jordan-1-LOW-PREM",
       price: "$189",
-      img: VBVF, // Add image path here
+      img: VBVF,
     },
     {
       id: 6,
       name: "Air-Jordan-MID",
       price: "$150",
-      img: SVS, // Add image path here
+      img: SVS,
     },
     {
       id: 7,
       name: "Air-Jordan- OG",
       price: "$300",
-      img: BFBN, // Add image path here
+      img: BFBN,
     },
     {
       id: 8,
       name: "Air-Jordan- OG",
       price: "$300",
-      img: GFDEGDF, // Add image path here
+      img: GFDEGDF,
     },
     {
       id: 9,
       name: "Air-Jordan- OG",
       price: "$300",
-      img: SFSDV, // Add image path here
+      img: SFSDV,
     },
     {
       id: 10,
       name: "Air-Jordan- OG",
       price: "$300",
-      img: BDGB, // Add image path here
+      img: BDGB,
     },
     {
       id: 11,
       name: "RETRO",
       price: "$300",
-      img: BVDFBD, // Add image path here
+      img: BVDFBD,
     },
-    // Add more products here
   ];
 
   return (
-    <div className="products-page p-8">
-      <h1 className="text-3xl font-bold mb-6">Our Products</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 ">
+    <Box sx={{ padding: 8 }}>
+      <Typography variant="h3" gutterBottom>
+        Our Products
+      </Typography>
+      <Grid container spacing={6}>
         {products.map((product) => (
-          <div
-            key={product.id}
-            className="product-card border p-4 rounded-lg shadow-lg"
-          >
-            <img
-              src={product.img}
-              alt={product.name}
-              className="w-full h-auto mb-4"
-            />
-            <h2 className="text-xl font-semibold">{product.name}</h2>
-            <p className="text-lg text-gray-700">{product.price}</p>
-          </div>
+          <Grid item xs={12} md={4} key={product.id}>
+            <Card sx={{ maxWidth: 345, boxShadow: 3 }}>
+              <CardMedia
+                component="img"
+                alt={product.name}
+                height="200"
+                image={product.img}
+                sx={{ objectFit: "contain" }}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {product.name}
+                </Typography>
+                <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                  {product.price}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small">Buy now</Button>
+                <Button size="small"> Details</Button>
+              </CardActions>
+            </Card>
+          </Grid>
         ))}
-      </div>
-    </div>
+      </Grid>
+    </Box>
   );
 }
 

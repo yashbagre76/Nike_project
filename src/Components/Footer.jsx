@@ -1,127 +1,112 @@
-import { current } from "@reduxjs/toolkit";
 import React from "react";
-
-let currentDate = new Date();
+import { Box, Container, Grid, Typography, Link } from "@mui/material";
 
 function Footer() {
+  const currentDate = new Date();
+
   return (
-    <>
-      <footer className="bg-black text-white py-8">
-        <div className="container mx-auto grid grid-col-1 md:grid-cols-3 gap-8 border-b border-gray-700 pb-6">
-          <div className="">
-            <h4 className=" text-lg font-semibold uppercase mb-4 ">
+    <footer className="bg-black text-white py-8">
+      <Container>
+        {/* Top Section */}
+        <Grid container spacing={6} borderBottom="1px solid #4a4a4a" pb={6}>
+          {/* Resources Section */}
+          <Grid item xs={12} md={4}>
+            <Typography variant="h6" gutterBottom>
               Resources
-            </h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className=" hover:underline text-sm">
-                  {" "}
-                  Find A store
-                </a>
-              </li>
-              <li>
-                <a href="#" className=" hover:underline text-sm">
-                  Become A Member
-                </a>{" "}
-              </li>
-              <li>
-                <a href="#" className=" hover:underline text-sm">
-                  {" "}
-                  Send Us Feedback
-                </a>
-              </li>
-            </ul>
-          </div>
+            </Typography>
+            <Box>
+              <Link href="#" color="inherit" display="block" sx={{ mb: 1 }}>
+                Find A Store
+              </Link>
+              <Link href="#" color="inherit" display="block" sx={{ mb: 1 }}>
+                Become A Member
+              </Link>
+              <Link href="#" color="inherit" display="block" sx={{ mb: 1 }}>
+                Send Us Feedback
+              </Link>
+            </Box>
+          </Grid>
+
           {/* Help Section */}
-          <div>
-            <h4 className="text-lg font-semibold uppercase mb-4">Get Help</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className=" hover:underline text-sm">
-                  {" "}
-                  Order Status
-                </a>
-              </li>
-              <li>
-                <a href="#" className=" hover:underline text-sm"></a> Delivery
-              </li>
-              <li>
-                <a href="#" className=" hover:underline text-sm"></a> Return{" "}
-              </li>
-              <li>
-                <a href="#" className=" hover:underline text-sm"></a> Payment
-                Options
-              </li>
-              <li>
-                <a href="#" className=" hover:underline text-sm"></a> Contact Us{" "}
-              </li>
-            </ul>
-          </div>
-          {/* Company Section  */}
-          <div>
-            <h4>About Nike</h4>
-            <ul>
-              <li>
-                <a href="#" className=" hover:underline text-sm">
-                  {" "}
-                  Guides
-                </a>
-              </li>
-              <li>
-                <a href="#" className=" hover:underline text-sm">
-                  {" "}
-                  Terms pf Sales
-                </a>
-              </li>
-              <li>
-                <a href="#" className=" hover:underline text-sm">
-                  {" "}
-                  Terms of Use
-                </a>
-              </li>
-              <li>
-                <a href="#" className=" hover:underline text-sm">
-                  {" "}
-                  Nike Privacy Policy{" "}
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        {/*Footer Bootam Section */}
-        <div className=" container mx-auto flex flex-col md:flex-row jutify-between  items-center mt-6 text-sm">
-          <p className=" text-gray-400">
-            2025 Nike , Inc . All rights reserved{" "}
-          </p>
-          <ul className="flex space-x-4 mt-4 md:mt-0">
-            <li>
-              <a href="#" className=" hover:underline text-sm">
-                {" "}
+          <Grid item xs={12} md={4}>
+            <Typography variant="h6" gutterBottom>
+              Get Help
+            </Typography>
+            <Box>
+              <Link href="#" color="inherit" display="block" sx={{ mb: 1 }}>
+                Order Status
+              </Link>
+              <Link href="#" color="inherit" display="block" sx={{ mb: 1 }}>
+                Delivery
+              </Link>
+              <Link href="#" color="inherit" display="block" sx={{ mb: 1 }}>
+                Return
+              </Link>
+              <Link href="#" color="inherit" display="block" sx={{ mb: 1 }}>
+                Payment Options
+              </Link>
+              <Link href="#" color="inherit" display="block" sx={{ mb: 1 }}>
+                Contact Us
+              </Link>
+            </Box>
+          </Grid>
+
+          {/* Company Section */}
+          <Grid item xs={12} md={4}>
+            <Typography variant="h6" gutterBottom>
+              About Nike
+            </Typography>
+            <Box>
+              <Link href="#" color="inherit" display="block" sx={{ mb: 1 }}>
                 Guides
-              </a>
-            </li>
-            <li>
-              <a href="# " className=" hover:underline text-sm">
-                {" "}
+              </Link>
+              <Link href="#" color="inherit" display="block" sx={{ mb: 1 }}>
                 Terms of Sales
-              </a>
-            </li>
-            <li>
-              <a href="#" className=" hover:underline text-sm">
-                {" "}
+              </Link>
+              <Link href="#" color="inherit" display="block" sx={{ mb: 1 }}>
                 Terms of Use
-              </a>
-            </li>
-            <li>
-              <a href=" #" className=" hover:underline text-sm">
-                {" "}
-                Nike Privacy Policy{" "}
-              </a>
-            </li>
-          </ul>
-        </div>
-      </footer>
-    </>
+              </Link>
+              <Link href="#" color="inherit" display="block" sx={{ mb: 1 }}>
+                Nike Privacy Policy
+              </Link>
+            </Box>
+          </Grid>
+        </Grid>
+
+        {/* Bottom Section */}
+        <Box mt={6}>
+          <Grid
+            container
+            justifyContent="space-between"
+            alignItems="center"
+            flexDirection={{ xs: "column", md: "row" }}
+          >
+            <Typography variant="body2" color="textSecondary" align="center">
+              {currentDate.getFullYear()} Nike, Inc. All rights reserved.
+            </Typography>
+            <Box
+              mt={{ xs: 2, md: 0 }}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Link href="#" color="inherit" sx={{ ml: 3 }}>
+                Guides
+              </Link>
+              <Link href="#" color="inherit" sx={{ ml: 3 }}>
+                Terms of Sales
+              </Link>
+              <Link href="#" color="inherit" sx={{ ml: 3 }}>
+                Terms of Use
+              </Link>
+              <Link href="#" color="inherit" sx={{ ml: 3 }}>
+                Nike Privacy Policy
+              </Link>
+            </Box>
+          </Grid>
+        </Box>
+      </Container>
+    </footer>
   );
 }
 
