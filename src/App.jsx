@@ -11,18 +11,12 @@ import About from "./Components/About";
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Headline />
-        <Routes>
-          <Route path="/" element={<MainContent />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/register" element={<RegisterCard />} />
-          <Route path="/login" element={<LoginCard />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-        {/* Footer */}
-        <Footer />
-      </div>
+      <Routes>
+        <Route path="/" element={<About />} />
+        <Route path=" Login" element={<Login />} />
+        <Route path=" Register" element={<Register />} />
+        <Route path=" Footer" element={<Footer />} />
+      </Routes>
     </Router>
   );
 }
