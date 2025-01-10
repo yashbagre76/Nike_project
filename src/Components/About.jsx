@@ -9,7 +9,7 @@ function About() {
       <section className="relative bg-black text-white">
         <div className="relative">
           <img
-            src="https://via.placeholder.com/1500x500" // Replace with a relevant hero image
+            src="\public\Img\download (1).jpg" // Replace with a relevant hero image
             alt="Store Hero"
             className="w-full h-[50vh] object-cover"
           />

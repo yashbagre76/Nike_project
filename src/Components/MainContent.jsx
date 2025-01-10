@@ -1,132 +1,134 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Box, Typography, Button, Grid } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Box, Skeleton, Button, Typography } from "@mui/material";
 
 function MainContent() {
-  return (
-    <main>
-      <Box
-        sx={{
-          py: 8,
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          alignItems: "center",
-          maxWidth: 1280,
-          mx: "auto",
-          px: 4,
-        }}
-      >
-        {/* Text Content */}
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <main>
         <Box
           sx={{
-            width: "100%",
-            md: { width: "50%" },
-            textAlign: { xs: "center", md: "left" },
-            mb: { xs: 8, md: 0 },
-          }}
-        >
-          {/* Heading */}
-          <Typography variant="h3" sx={{ fontWeight: "bold", mb: 6 }}>
-            YOUR FEET DESERVE THE BEST
-          </Typography>
-
-          {/* Description */}
-          <Typography
-            variant="h5"
-            sx={{ color: "gray", mb: 6, fontWeight: "medium" }}
-          >
-            YOUR FEET DESERVE THE BEST, AND WE'RE HERE TO HELP YOU WITH OUR
-            SHOES.
-          </Typography>
-
-          {/* Buttons Section */}
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: { xs: "column", md: "row" },
-              justifyContent: { xs: "center", md: "flex-start" },
-              gap: 2,
-              mb: 6,
-            }}
-          >
-            <Link to="/products">
-              <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: "orange",
-                  fontWeight: "medium",
-                  paddingX: 6,
-                  paddingY: 3,
-                  fontSize: "1.125rem",
-                  borderRadius: 2,
-                  "&:hover": {
-                    backgroundColor: "darkorange",
-                    transform: "scale(1.05)",
-                  },
-                }}
-              >
-                Shop Now
-              </Button>
-            </Link>
-            <Button
-              variant="outlined"
-              sx={{
-                borderColor: "orange",
-                color: "orange",
-                fontWeight: "medium",
-                paddingX: 6,
-                paddingY: 3,
-                fontSize: "1.125rem",
-                borderRadius: 2,
-                "&:hover": {
-                  backgroundColor: "orange",
-                  color: "white",
-                  transform: "scale(1.05)",
-                },
-              }}
-            >
-              Category
-            </Button>
-          </Box>
-
-          {/* Shopping Section (smaller size) */}
-          <Box>
-            <Typography variant="body2" sx={{ color: "gray", mb: 1 }}>
-              Also Available On
-            </Typography>
-            <img
-              src="/src/assets/shops.png"
-              alt="Shop logos"
-              style={{
-                display: "block",
-                margin: "0 auto",
-                maxWidth: "25%",
-              }}
-            />
-          </Box>
-        </Box>
-
-        {/* Hero Image */}
-        <Box
-          sx={{
-            width: "100%",
-            md: { width: "50%" },
+            py: 8,
             display: "flex",
-            justifyContent: "center",
+            flexDirection: "column",
             alignItems: "center",
+            maxWidth: 1280,
+            mx: "auto",
+            px: 4,
           }}
         >
-          <img
-            src="/src/assets/shoe_image.png"
-            alt="Hero Shoe"
-            style={{
-              maxWidth: "800px",
-              maxHeight: "800px",
-              objectFit: "contain",
-              height: "auto",
-            }}
+          <Skeleton
+            variant="rectangular"
+            width="100%"
+            height={500}
+            sx={{ borderRadius: 2, mb: 4 }}
           />
         </Box>
+      </main>
+    );
+  }
+
+  return (
+    <main>
+      {/* Video Background */}
+      <Box
+        sx={{
+          position: "relative",
+          width: "100%",
+          height: "100vh",
+          overflow: "hidden",
+        }}
+      >
+        <video
+          src="/Untitled video - Made with Clipchamp_1736442133511.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            zIndex: -1,
+          }}
+        />
+
+        {/* Content Overlaid on Video */}
+        <Box
+          sx={{
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+            color: "white",
+            textAlign: "center",
+            px: 4,
+          }}
+        >
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            sx={{
+              marginTop: 50,
+              fontSize: "1.25rem",
+              paddingX: 6,
+              paddingY: 2,
+              borderRadius: 4,
+              boxShadow: 2,
+              "&:hover": {
+                backgroundColor: "darkblue",
+                transform: "scale(1.05)",
+              },
+            }}
+          >
+            Shop Now
+          </Button>
+        </Box>
+      </Box>
+
+      {/* Additional Button Below Video */}
+      <Box
+        sx={{
+          py: 6,
+
+          display: "flex",
+          justifyContent: "center",
+          backgroundColor: "#f5f5f5", // Light background for contrast
+          textAlign: "center",
+        }}
+      >
+        <Button
+          variant="outlined"
+          color="primary"
+          size="large"
+          sx={{
+            fontSize: "1.25rem",
+            paddingX: 6,
+            paddingY: 2,
+            borderRadius: 4,
+            borderWidth: 2,
+            "&:hover": {
+              backgroundColor: "primary.light",
+              transform: "scale(1.05)",
+            },
+          }}
+        >
+          Learn More
+        </Button>
       </Box>
     </main>
   );

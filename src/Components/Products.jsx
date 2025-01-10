@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardActions,
@@ -9,6 +9,7 @@ import {
   Grid,
   Box,
 } from "@mui/material";
+import SkeletonLoader from "./SkeletonLoader"; // Adjust path to your skeleton component
 import xyz from "../../public/Img/JORDER_SE.jpg";
 import QWY from "../../public/Img/JORDERN-AIR.jpg";
 import ERT from "../../public/Img/JORDERN-HIGH.jpg";
@@ -22,6 +23,7 @@ import BDGB from "../../public/Img/RETRO-LOW.jpg";
 import BVDFBD from "../../public/Img/RETRO.jpg";
 
 function Products() {
+  const [loading, setLoading] = useState(true); // Loading state
   const products = [
     {
       id: 1,
@@ -91,37 +93,101 @@ function Products() {
     },
   ];
 
+  useEffect(() => {
+    // Simulate a delay for loading
+    const timer = setTimeout(() => {
+      setLoading(false); // Stop loading after 2 seconds
+    }, 2000);
+
+    return () => clearTimeout(timer); // Cleanup timer
+  }, []);
+
   return (
     <Box sx={{ padding: 8 }}>
-      <Typography variant="h3" gutterBottom>
-        Our Products
+      <Typography variant="h3" gutterBottom sx={{ fontWeight: "bold" }}>
+        Products
       </Typography>
       <Grid container spacing={6}>
-        {products.map((product) => (
-          <Grid item xs={12} md={4} key={product.id}>
-            <Card sx={{ maxWidth: 345, boxShadow: 3 }}>
-              <CardMedia
-                component="img"
-                alt={product.name}
-                height="200"
-                image={product.img}
-                sx={{ objectFit: "contain" }}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {product.name}
-                </Typography>
-                <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                  {product.price}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small">Buy now</Button>
-                <Button size="small"> Details</Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
+        {loading
+          ? // Show Skeleton Loader
+            Array.from({ length: 9 }).map((_, index) => (
+              <Grid item xs={12} md={4} key={index}>
+                <SkeletonLoader width={345} /> {/* Use your SkeletonLoader */}
+              </Grid>
+            ))
+          : // Show Product Cards
+            products.map((product) => (
+              <Grid item xs={12} md={4} key={product.id}>
+                <Card
+                  sx={{
+                    maxWidth: 345,
+                    boxShadow: 5,
+                    borderRadius: 2,
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                    "&:hover": {
+                      transform: "scale(1.05)",
+                      boxShadow: 10,
+                    },
+                  }}
+                >
+                  <CardMedia
+                    component="img"
+                    alt={product.name}
+                    height="200"
+                    image={product.img}
+                    sx={{
+                      objectFit: "contain",
+                      borderRadius: "8px 8px 0 0",
+                    }}
+                  />
+                  <CardContent>
+                    <Typography
+                      gutterBottom
+                      variant="h6"
+                      component="div"
+                      sx={{ fontWeight: "bold" }}
+                    >
+                      {product.name}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "text.secondary", fontSize: "1rem" }}
+                    >
+                      {product.price}
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      sx={{
+                        fontWeight: "bold",
+                        backgroundColor: "#FF5722",
+                        color: "white",
+                        "&:hover": {
+                          backgroundColor: "#e64a19",
+                        },
+                      }}
+                    >
+                      Buy now
+                    </Button>
+                    <Button
+                      size="small"
+                      sx={{
+                        fontWeight: "bold",
+                        border: "2px solid #FF5722",
+                        color: "#FF5722",
+                        "&:hover": {
+                          backgroundColor: "#FF5722",
+                          color: "white",
+                        },
+                      }}
+                    >
+                      Details
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
       </Grid>
     </Box>
   );
